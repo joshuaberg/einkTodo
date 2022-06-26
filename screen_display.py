@@ -43,7 +43,7 @@ curr = 'main'
 
 
 #Draw the top title graphics
-XRSTART = 5
+XRSTART = 50
 YRSTART = 10
 XREND = 795
 YREND = 90
@@ -52,17 +52,19 @@ draw.rectangle((XRSTART +1,  YRSTART + 1,  XREND - 1, YREND - 1))
 draw.rectangle((XRSTART +2,  YRSTART + 2,  XREND - 2, YREND - 2))
 draw.text((300 , 25), 'To Do List' , font = fontTitle, fill = 0)
 
+# TO DO
+# Draw in numbering system to left for identifiers
 
-
+posIdentity = 1
 # Open the CSV file
 with open('todo.csv') as csvfile:
     file  = csv.reader(csvfile,delimiter = ',')
     
     for row in file:
         #determine the current state.  If a sub point then increase xcord
-        if int(row[2]) == 0:
+        if int(row[1]) == 0:
             curr = 'main'    
-        elif int(row[2]) == 1:
+        elif int(row[1]) == 1:
             curr = 'sub'
             xcord = XSTART + XINC
     
@@ -75,9 +77,11 @@ with open('todo.csv') as csvfile:
         else:
             yadjust = 0
             
+        
             
         #add text to draw object
-        draw.text((xcord, ycord - yadjust), row[1].strip() , font = fontList, fill = 0)
+        draw.text((xcord, ycord - yadjust), row[0].strip() , font = fontList, fill = 0)
+        draw.text((XSTART - 20, YSTART), posIdentity, font = fontList, fill = 0    )
          
         #update cordinates.  y increments by contant - some for sub bullets
         #reset x and extray back to std
@@ -85,7 +89,7 @@ with open('todo.csv') as csvfile:
         ycord = ycord + YINC - yadjust
         xcord = XSTART
         prev = curr
-          
+        posIdentity =  posIdentity + 1
           
         
 #display the image then go to sleep to prevent power draw.
