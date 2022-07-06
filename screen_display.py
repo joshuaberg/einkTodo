@@ -81,7 +81,7 @@ with open('todo.csv') as csvfile:
             
         #add text to draw object
         draw.text((xcord, ycord - yadjust), row[0].strip() , font = fontList, fill = 0)
-        draw.text((XSTART - 20, YSTART), posIdentity, font = fontList, fill = 0    )
+        draw.text((XSTART - 20, YSTART), posIdentity, font = fontList, fill = 0 )
          
         #update cordinates.  y increments by contant - some for sub bullets
         #reset x and extray back to std

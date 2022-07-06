@@ -9,9 +9,7 @@ def main():
     addToList(content = "inserted", position = 8)
 
 
-#To do... maybe add filename in this 
-
-#call to ad item to todo list
+#ADDS ITEM TO LIST
 def addToList(content, position = 999, sub = 0):
 
     #put contents into list
@@ -47,7 +45,11 @@ def addToList(content, position = 999, sub = 0):
             write = csv.writer(csvfile)
             write.writerows(data)
 
-    
+
+
+#REMOVE ITEM FROM LIST
+def removeFromList(content, position = 999, sub = 0):
+
 
 
 
